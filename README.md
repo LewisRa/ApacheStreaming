@@ -1,5 +1,16 @@
 # ApacheStreaming
+Built a fault tolerant twiiter projects that live streams and tracks hashtags 
+## Spark
+- Spark can work as a replacement for MapReduce because it is a general processing framework fro distrubuted systems. (You can get Spark to work with YARN as it cluster manager)
 
+- Spark offers a variety of enviroments in which you can function it has a **REPL** OR INTERACTIVE environment (REPL= read,evaluate, print loop) which you can quickly type in commands and see output quickly.GrEat for prototyping in python ot scala before production.
+1. Spark SQL
+2. MLLIB -machine learning
+2. GraphX- DEALS WITH DATA BEST REPRESTED BY GRAOHS LIKE SOCIAL NETWOEKS
+4. Spark Streaming
+
+## Stream Processing with Spark Streaming 
+Spark Streaming allows you to view streams as entities within Discretized Streams(**Dstreams**). Dstreams are made up of RDDs(**Resilient Distrubuted Streams**) which form fundamental programming abstraction in Spark. Abstractions allow a data stream to be seen just a sequence of batch data
 ## Stateless vs Stateful transformations 
 
 ### Stateless
