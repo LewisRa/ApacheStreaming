@@ -3,10 +3,10 @@ Built a fault tolerant twiiter projects that live streams and tracks hashtags
 ## Spark
 - Spark can work as a replacement for MapReduce because it is a general processing framework fro distrubuted systems. (You can get Spark to work with YARN as it cluster manager)
 
-- Spark offers a variety of enviroments in which you can function it has a **REPL** OR INTERACTIVE environment (REPL= read,evaluate, print loop) which you can quickly type in commands and see output quickly.GrEat for prototyping in python ot scala before production.
+- Spark offers a variety of enviroments in which you can function it has a **REPL** OR INTERACTIVE environment (REPL= read,evaluate, print loop) which you can quickly type in commands and see output quickly. Great for prototyping in python ot scala before production.
 1. Spark SQL
 2. MLLIB -machine learning
-2. GraphX- DEALS WITH DATA BEST REPRESTED BY GRAOHS LIKE SOCIAL NETWOEKS
+2. GraphX- deals with data best represented by graphs like social networks 
 4. Spark Streaming
 
 ## Stream Processing with Spark Streaming 
