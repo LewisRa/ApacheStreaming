@@ -22,3 +22,4 @@ Spark Streaming allows you to view streams as entities within Discretized Stream
 - Stateful transformation accumulate or summarize information across multiple
 - Typically stateful transformation are applied to streaming data(stateless can also be apply to streaming data like `map()`, `reduceByKey()`, `filter()` in the **firstexample** but in most situations, it does not make much sense. 
 - Accumulating information across all entities in stream or all entities in a particular window of time. 
+
