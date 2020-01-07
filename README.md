@@ -1,9 +1,9 @@
 ##Google:   
-  current storage = 15 exabytes
-  Processed per day = 100 petabytes
-  number of pages indexed = 60 trillion
-  unique seatch users per month > 1 billion
-  searches by seconds = 2.3 million
+- current storage = 15 exabytes
+- Processed per day = 100 petabytes
+- number of pages indexed = 60 trillion
+- unique seatch users per month > 1 billion
+- searches by seconds = 2.3 million
   
 
 # ApacheStreaming
