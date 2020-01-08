@@ -1,10 +1,4 @@
-##Google:   
-- current storage = 15 exabytes
-- Processed per day = 100 petabytes
-- number of pages indexed = 60 trillion
-- unique seatch users per month > 1 billion
-- searches by seconds = 2.3 million
-  
+
 
 # ApacheStreaming
 Built a fault tolerant twiiter projects that live streams and tracks hashtags 
@@ -37,7 +31,7 @@ Example: Stream of integers --> 473890174
 
 In a Dstream, you group integers into batches, which all integers which have arrived within a certain time interval form one RDD. The interval of time is called **batch interval** and a property of every Dstream.
 
-(4)  (738) (901) (643) **The data arrived in 4 batches
+(4)  (738) (901) (643) **The data arrived in 4 batches<br>
 RDD4  RDD3  RDD2  RDD1**
 
 If you apply the **stateless** transformation `reduceByKey()` The output would be **14 18 10 13** which is basically a new dstream where individual RDDs in the result is the sum of individual RDDs original stream. (Not commonly used)
@@ -55,11 +49,11 @@ All methods which apply to regular RDDs along with single entitiy apply to pair 
 
 Going back to the previous example of strem of integers, assign the same key ("K" for example) ti each integer to make every element making a each elemen a key-value pair. Thus, making every RDD a pair RDD.
 
-(4)  (738) (901) (643)
+(4)  (738) (901) (643)<br>
 K     KKK   KKK   KKK
 
 Now `updateStateByKey()` will sum all values with the same key ("K")
-**(4)  (738) (901) (643)--->45
+**(4)  (738) (901) (643)--->45<br>
 K     KKK   KKK   KKK**
 
 
