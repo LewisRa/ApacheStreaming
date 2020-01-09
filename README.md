@@ -25,7 +25,7 @@ Spark Streaming allows you to view streams as entities within Discretized Stream
 - Typically stateful transformation are applied to streaming data(stateless can also be apply to streaming data like `map()`, `reduceByKey()`, `filter()` in the **firstexample** but in most situations, it does not make much sense. 
 - Accumulating information across all entities in stream or all entities in a particular window of time. 
 
-## updateStateByKey() - Summarizing Strem Data
+## updateStateByKey() - Summarizing Stream Data
 
 Example: Stream of integers --> 473890174
 
@@ -47,7 +47,7 @@ Explicitly the `updateStateByKey()` works like this:
 
 All methods which apply to regular RDDs along with single entitiy apply to pair RDDS along with the methods `keys()` and `values()`
 
-Going back to the previous example of strem of integers, assign the same key ("K" for example) ti each integer to make every element making a each elemen a key-value pair. Thus, making every RDD a pair RDD.
+Going back to the previous example of strem of integers, assign the same key ("K" for example) to each integer to make every element making a each elemen a key-value pair. Thus, making every RDD a pair RDD.
 
 (4)  (738) (901) (643)<br>
 K     KKK   KKK   KKK
@@ -56,6 +56,19 @@ Now `updateStateByKey()` will sum all values with the same key ("K")
 **(4)  (738) (901) (643)--->45<br>
 K     KKK   KKK   KKK**
 
+## CountByWindow() - Summarizing Stream Data by Window.
+
+  Tranformations on streams with a specified interval is accomplishedusing window operations. Consider a stream of logs for a website. We want the cumulative error rate over a 30 seconf timeframe. The **batch interval** is fixed at 10s but we are interested in data over 30 seconds. We will define what is called a **sliding window**. The size of th sliding window is how many RDDs it includes. 
+  
+  Sliding windows are larger than batch intervals!
+  
+  A sliding window includes multiple RDDs within it and it moves over the RDDs in a well defined way including differenr RDDs can different times.
+  
+  **Sliding intervals** determines how many RDDs leave the sliding windows and how mnay Rdds enter the sliding window for every point in time, In this example, pur sliding interval is 20 seconds which means for every slide of the window 2 RDDs leave and 2 RDDs enter the sliding window.
+  
+The `CountByWindow` method allows you to count the number of messges within a certain window of time. The result of the `CountByWindow ` operation is another Dstream where every RDD in the Dstream containes the summary of individual RDDs within the sliding window. 
+  
+In summary, the batch interval determines which messages get grouped into a single RDD. The window size determine hoe far back in time you want to go in order to perform summary operation and rher slidiinf interval determines how the windown will move at every time instance.
 
 
 
