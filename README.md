@@ -82,7 +82,7 @@ In summary, the batch interval determines which messages get grouped into a sing
  Initial count = 9 errors in red
  2 RDDs enter the window: 9+2=11
  2 RDDs leave the window to compensate for the 2 RDDs that entered
- Since 2 RDDs left window, subtract thr number of errors ing redL 11-6 =5 total errors in red currently.
+ Since 2 RDDs left window, subtract thr number of errors ing red: 11-6 = 5 total errors in red currently.
  
  2 RDDs entered the window ---> summary function
  2 RDDs left the window ---> inverse function
@@ -90,7 +90,7 @@ In summary, the batch interval determines which messages get grouped into a sing
  
  **Specifying summary function and inverse functions essentially make windowing more efficent** 
  
- ## 
+ ## Building a Robust Spark Streaming Applications 
  A Robust Application has the ability to recover from failures (fault tolerance). 
  
  Spark is a distributed computing engine. It runs on a cluster of machines. So it has a lot of robustness built into its distributed computing. Any data stored in Spark will be replicated across multiple data noses in the cluster so data can't be lost easily. 
@@ -103,7 +103,20 @@ Ephermal = streaming data. This streaming applications that run on spark requie 
 **Advantage**
 - Limiting state recomputation in case of failure
 - Fault tolerance for the driver job
+
+Driver programs in spark spin off the distributed computing tasks on your cluster. 
+---
+### Spark streaming = Directed Acyclic Graph 
  
+ A spark program which you submit to the spark cluster is broken into discrete tasks that can run in parallel on data.Every task has a RDD associated with it and that task thatworks on the RDD.
+ 
+ The RDD are partitionsed acroess machines in your cluster, ThE task and it asoccited RDD depend on other tasks. Thus the tasks and RDDs form a DAG. 
+ 
+ Thus, an RDD can always be reconstructed using its lineage. The RDD kept track of it lineage such that if there are if nodes crash and data is lost, an RDD know how to recontruct itselfbased on its lineage.
+ 
+ If you checkpoint data, it reduces(how much lineage) how much statehas to be recomputed. 
+ 
+ **Checkpointing stores intermediate versions of RDDs in storage such as HDFS or Amazon S3** This reduced 50-100 transformation to 4 to 5. 
 
 
 
