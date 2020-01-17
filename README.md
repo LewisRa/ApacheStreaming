@@ -117,6 +117,10 @@ Driver programs in spark spin off the distributed computing tasks on your cluste
  If you checkpoint data, it reduces(how much lineage) how much statehas to be recomputed. 
  
  **Checkpointing stores intermediate versions of RDDs in storage such as HDFS or Amazon S3** This reduced 50-100 transformation to 4 to 5. 
+ 
+ This is why the streaming spark modeule requires that even your practice developer application has a checkpoint method call on the streaming context. **********
+ 
+ **We specify our code to the file: ///temp/spark. In production environment: We use HDFS or S3**
 
 
 
