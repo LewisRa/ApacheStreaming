@@ -49,11 +49,11 @@ All methods which apply to regular RDDs along with single entitiy apply to pair 
 
 Going back to the previous example of strem of integers, assign the same key ("K" for example) to each integer to make every element making a each elemen a key-value pair. Thus, making every RDD a pair RDD.
 
-(4)  (738) (901) (643)<br>
+(4)  (738) (901) (643) <br>
 K     KKK   KKK   KKK
 
-Now `updateStateByKey()` will sum all values with the same key ("K")
-**(4)  (738) (901) (643)--->45<br>
+Now `updateStateByKey()` will sum all values with the same key ("K")<br>
+**(4)  (738) (901) (643)--->45 <br>
 K     KKK   KKK   KKK**
 
 ## CountByWindow() - Summarizing Stream Data by Window.
@@ -70,6 +70,40 @@ The `CountByWindow` method allows you to count the number of messges within a ce
   
 In summary, the batch interval determines which messages get grouped into a single RDD. The window size determine hoe far back in time you want to go in order to perform summary operation and rher slidiinf interval determines how the windown will move at every time instance.
 
+## Summary and Interval Functions
+ Windowing Operationa can get pretty expensice especially if the window size is large.
+ 
+ To optimize summary calculation: Use inverse functions. 
+ 
+ Example: you wnat to count of error messges within a cerain window within window, you wnat to count the number of messges in red. 
+ The summary fuction you can peform is the sum() operation. 
+ 
+ **Sliding interval**
+ Initial count = 9 errors in red
+ 2 RDDs enter the window: 9+2=11
+ 2 RDDs leave the window to compensate for the 2 RDDs that entered
+ Since 2 RDDs left window, subtract thr number of errors ing redL 11-6 =5 total errors in red currently.
+ 
+ 2 RDDs entered the window ---> summary function
+ 2 RDDs left the window ---> inverse function
+ In the same way, if summary functions is muliplication, the inverse is some kind of division
+ 
+ **Specifying summary function and inverse functions essentially make windowing more efficent** 
+ 
+ ## 
+ A Robust Application has the ability to recover from failures (fault tolerance). 
+ 
+ Spark is a distributed computing engine. It runs on a cluster of machines. So it has a lot of robustness built into its distributed computing. Any data stored in Spark will be replicated across multiple data noses in the cluster so data can't be lost easily. 
+ 
+The processes that we run in parallel on multiple machines in this cluster also tendd to be robust. IF a process fails on a particular machine the process is restarted on another machine. 
+
+**Once you get Spark to work with streaming data, streaming applications also require additional feture to protect against data loss**
+
+Ephermal = streaming data. This streaming applications that run on spark requie checkpointing. Checkpointing invovles periodically saving the data that you recieve in the form of stremas to a reliable storage system. YoU just don't store source data. All computations and transformations that are performed on streams and the intermediate statitics are also stored at the check point.
+**Advantage**
+- Limiting state recomputation in case of failure
+- Fault tolerance for the driver job
+ 
 
 
 
